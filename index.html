@@ -2,13 +2,26 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Zahlenaufgabe</title>
+<title>Matheübung</title>
 
 <style>
 
 body{
 font-family:Arial;
 padding:20px;
+}
+
+.titles{
+display:flex;
+gap:80px;
+margin-bottom:20px;
+}
+
+.title{
+width:220px;
+font-size:22px;
+font-weight:bold;
+text-align:center;
 }
 
 .container{
@@ -31,6 +44,7 @@ gap:10px;
 display:flex;
 align-items:center;
 gap:10px;
+min-height:36px;
 }
 
 input{
@@ -61,18 +75,23 @@ background:#ff8c8c;
 }
 
 .rounded{
-margin-left:10px;
+margin-left:5px;
 font-weight:bold;
+width:40px;
 }
 
 .failCount{
 color:red;
 font-weight:bold;
+width:20px;
+text-align:center;
 }
 
 .skipX{
 color:red;
 font-weight:bold;
+width:20px;
+text-align:center;
 }
 
 </style>
@@ -80,7 +99,11 @@ font-weight:bold;
 
 <body>
 
-<h2>Aufgaben</h2>
+<div class="titles">
+<div class="title">Fensterseite</div>
+<div class="title">Mittelgang</div>
+<div class="title">Türseite</div>
+</div>
 
 <div class="container">
 
@@ -186,9 +209,10 @@ let fail=input.parentElement.querySelector(".failCount");
 
 if(Math.abs(value-solution)<0.001){
 
+input.classList.remove("wrong");
 input.classList.add("correct");
-input.disabled=true;
 
+input.disabled=true;
 button.style.display="none";
 
 input.parentElement.querySelector(".rounded").textContent="→ "+Math.round(solution);
@@ -212,7 +236,6 @@ input.classList.remove("wrong");
 input.classList.add("skip");
 
 input.disabled=true;
-
 button.style.display="none";
 
 input.parentElement.querySelector(".skipX").textContent="X";
